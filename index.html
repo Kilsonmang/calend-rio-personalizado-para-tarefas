@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Minha Agenda</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="envoltorio">
+  <header class="topo">
+    <div class="marca">
+      <h1>📅 Minha Agenda</h1>
+      <span id="estado" class="estado">A ligar…</span>
+    </div>
+    <div class="nav-mes">
+      <button id="btnAnterior" class="btn-seta" title="Mês anterior" aria-label="Mês anterior">‹</button>
+      <h2 id="tituloMes"></h2>
+      <button id="btnProximo" class="btn-seta" title="Próximo mês" aria-label="Próximo mês">›</button>
+      <button id="btnHoje" class="btn-secundario">Hoje</button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="calendario">
+      <div class="dias-semana">
+        <span>Seg</span><span>Ter</span><span>Qua</span><span>Qui</span>
+        <span>Sex</span><span>Sáb</span><span>Dom</span>
+      </div>
+      <div id="grelha" class="grelha"></div>
+    </section>
+
+    <aside class="painel">
+      <div class="painel-cabecalho">
+        <h3 id="tituloDia"></h3>
+        <button id="btnNova" class="btn-primario">+ Nova</button>
+      </div>
+      <div class="resumo-dia">
+        <small id="textoProgresso"></small>
+        <div class="barra"><div id="barraDia"></div></div>
+      </div>
+      <ul id="listaTarefas"></ul>
+      <h3 class="titulo-seccao">🚀 Projetos em curso</h3>
+      <ul id="listaProjetos"></ul>
+    </aside>
+  </main>
+</div>
+
+<dialog id="modal">
+  <form id="formTarefa">
+    <h3 id="tituloModal">Nova tarefa</h3>
+    <label class="campo">Título
+      <input type="text" id="campoTitulo" required placeholder="Ex: Estudar Laravel">
+    </label>
+    <div class="duas-colunas">
+      <label class="campo">Tipo
+        <select id="campoTipo">
+          <option value="tarefa">Tarefa do dia</option>
+          <option value="simples">Projeto simples</option>
+          <option value="complexo">Projeto complexo</option>
+        </select>
+      </label>
+      <label class="campo">Prioridade
+        <select id="campoPrioridade">
+          <option value="baixa">Baixa</option>
+          <option value="media" selected>Média</option>
+          <option value="alta">Alta</option>
+        </select>
+      </label>
+    </div>
+    <div class="duas-colunas">
+      <label class="campo">Data
+        <input type="date" id="campoData" required>
+      </label>
+      <label class="campo">Hora (opcional)
+        <input type="time" id="campoHora">
+      </label>
+    </div>
+    <label class="campo">Descrição
+      <textarea id="campoDescricao" rows="2" placeholder="Notas, links, detalhes..."></textarea>
+    </label>
+    <label class="campo" id="grupoSubtarefas" hidden>Etapas (uma por linha)
+      <textarea id="campoSubtarefas" rows="4" placeholder="Criar base de dados&#10;Fazer o login&#10;Testar"></textarea>
+    </label>
+    <p id="erroForm" class="erro" hidden></p>
+    <div class="acoes">
+      <button type="button" id="btnCancelar" class="btn-secundario">Cancelar</button>
+      <button type="submit" class="btn-primario">Guardar</button>
+    </div>
+  </form>
+</dialog>
+
+<script src="script.js"></script>
+</body>
+</html>
